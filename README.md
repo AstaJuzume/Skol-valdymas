@@ -1,77 +1,93 @@
-# Skolų valdymas – Power Apps stiliaus prototipas
+# Skolų valdymas – atnaujintas Power Apps stiliaus prototipas
 
-Parengta pagal 2026-11-03 komercinio pasiūlymo skolų aplikacijai funkcionalumą. Tai naršyklėje veikiantis demonstracinis prototipas, o ne importuojamas Power Apps .msapp sprendimas.
+Versija 2. Parengta pagal pateiktą atnaujintą 2026-11-03 komercinį pasiūlymą. Tai veikiantis HTML demonstracinis prototipas, ne importuojamas Power Apps .msapp failas.
 
-## GitHub Pages
+## GitHub Pages: įkėlimas arba atnaujinimas
 
 1. Išskleiskite ZIP kompiuteryje.
-2. Savo GitHub saugyklos pagrindiniame kataloge įkelkite **index.html**. Jis turi būti šaknyje, o ne papildomame aplanke. Galite kartu įkelti README.md ir CSV pavyzdžius.
-3. Saugyklos Settings → Pages → Build and deployment pasirinkite „Deploy from a branch“.
-4. Pasirinkite šaką „main“, aplanką „/ (root)“, spauskite Save.
-5. Kai GitHub paskelbs svetainę, atverkite Pages skiltyje pateiktą nuorodą.
+2. Saugyklos pagrindiniame kataloge įkelkite arba pakeiskite **index.html**. Failas turi būti šaknyje, ne papildomame aplanke. Galima kartu įkelti kitus paketo failus.
+3. Settings → Pages → Deploy from a branch → main → / (root) → Save.
+4. Atverkite GitHub pateiktą svetainės nuorodą. Atnaujinus esamą prototipą, palaukite sėkmingo GitHub paskelbimo ir prireikus paspauskite Ctrl+F5.
 
-Nereikia npm, build komandos, API raktų ar papildomų bibliotekų. Visi stiliai ir kodas įtraukti į index.html, todėl veikia ir projekto poaplankyje. Vietinei demonstracijai galima tiesiog atidaryti index.html naršyklėje. Duomenų išsaugojimas atidarius per file:// priklauso nuo naršyklės; patikimiausia naudoti GitHub Pages.
+Nereikia npm, build proceso, API raktų ar išorinių bibliotekų. Viskas, įskaitant PDF šriftą, įtraukta į index.html. Veikia ir GitHub projekto poaplankyje. Galima atverti index.html tiesiog kompiuteryje; duomenų išsaugojimas per file:// priklauso nuo naršyklės.
 
-## Demonstravimo seka
+Versija 2 naudoja atskirą naršyklės duomenų raktą, todėl senos demonstracijos įrašai nepakeičia naujo modelio. Tai nesusiję su tikrų duomenų migracija.
 
-1. Pradinis vaidmuo – vadybininkė Aistė. „Mano skolininkai“ rodo tik jai priskirtus klientus.
-2. Atidarykite skolininko kortelę: skola, paskutinis mokėjimas, importo pokyčiai, priminimų istorija.
-3. Sąraše pažymėkite kelis skolininkus → „Paruošti priminimą“ → peržiūrėkite individualius laiškus → pažymėkite patvirtinimą → „Patvirtinti ir siųsti (demo)“.
-4. Atidarykite „Priminimų istorija“. Užfiksuotas laikas, gavėjas, skolos suma, etapas, patvirtinęs vadybininkas, laiško turinys ir dabartinės skolos pokytis nuo priminimo.
-5. Viršuje pasirinkite „Vadovas“. Matomi visi skolininkai, skolos pagal vadybininkus, filtrai ir visų priminimų istorija. Siuntimo veiksmų nėra.
-6. Pasirinkite „Administratorius“ → „Duomenų importas“ → „Imituoti kasdienį importą“ arba įkelkite CSV. Patikrinto CSV pakeitimai įrašomi tik patvirtinus importą.
-7. Peržiūrėkite skolininko kortelę po importo: skola pasikeitė, ankstesni priminimai išliko.
-8. „Administravimas“: sukurkite naudotoją, aktyvuokite / išjunkite prieigą, priskirkite skolininkus vadybininkams, keiskite laiško šabloną ir etapus.
-9. Prieš kitą demonstraciją: „Administravimas“ → „Atkurti demonstracinius duomenis“.
+## Kas pasikeitė
 
-Vaidmenų perjungiklyje yra dvi vadybininkų paskyros, vadovas ir administratorius. Naujus vadybininkus galima sukurti ir jiems priskirti klientus; prisijungimo perjungiklis demonstruoja iš anksto parinktas paskyras.
-
-## Pasiūlymo funkcijų atitiktis
-
-| Funkcija | Prototipo įgyvendinimas |
+| Pasiūlymo funkcija | Prototipe |
 |---|---|
-| Kasdienis CSV atnaujinimas | Tikras CSV nuskaitymas, patikra, importo patvirtinimas, istorija; kasdienio paleidimo imitacija |
-| Skolininkų priskyrimai | Administravimo registras, keičiamas vadybininkas |
-| Vadybininko asmeninis sąrašas | Vaidmeniui priklausanti duomenų atranka |
-| Paieška ir filtravimas | Pavadinimas, kodas, el. paštas, būsena, vadybininkas |
-| Skolininko kortelė | Skola, terminas, mokėjimas, pokyčiai, priminimų istorija |
-| Skolos ir mokėjimo pokyčiai | Palyginimas su ankstesniu importu, datuoti pokyčiai |
-| Skolininkų pasirinkimas | Individualus ir masinis žymėjimas |
-| Priminimo peržiūra | Individualus laiškas kiekvienam klientui, tema ir redaguojamas tekstas |
-| Vadybininko patvirtinimas | Privaloma patvirtinimo varnelė, atskiras siuntimo veiksmas |
-| El. laiškų siuntimas | Imitacija; realių laiškų nesiunčia |
-| Siuntimo istorija | Data, gavėjas, skolos suma, etapas, patvirtinęs asmuo, laiškas |
-| Vadovo prieiga | Visų klientų ir vadybininkų apžvalga bei istorija |
-| Administravimas | Naudotojų prieigos, priskyrimai, šablonas, importo nustatymai |
-| Etapų pagrindas | Etapų kūrimas / redagavimas, dienų slenkstis ir aktyvumas; siuntimo metu pasirenkamas etapas |
+| Bendra ir pradelsta skola | Atskiri rodikliai, skaičiuojami pagal sąskaitų likučius ir terminus |
+| Per dieną gauti mokėjimai | Pasirenkama diena, faktinių demonstracinių mokėjimų suma ir nuoroda į registrą |
+| Sąskaitų registras | Numeris, klientas, vadybininkas, išrašymo data, terminas, suma, likutis, būsena |
+| Paieška ir filtrai | Pagal vadybininką, klientą, sąskaitą ir mokėjimo terminų laikotarpį |
+| Mokėjimų registras | Atskiri mokėjimai, data, suma, klientas ir susijusi sąskaita; datų ir vadybininko filtrai |
+| Kliento kortelė | Skolos informacija, sąskaitos, mokėjimų istorija, importo pokyčiai ir priminimai |
+| Vadybininko prieiga | Tik priskirti klientai, sąskaitos, mokėjimai ir ataskaitos |
+| Vadovo prieiga | Visų vadybininkų skolų, mokėjimų ir priminimų peržiūra |
+| Rankinis priminimų pasirinkimas | Vieno arba kelių skolininkų žymėjimas, individualių laiškų peržiūra |
+| Trys priminimų etapai | Mandagus priminimas; raginimas atsiskaityti; galutinis perspėjimas apie galimą teisinį išieškojimą |
+| Patvirtinimas prieš siuntimą | Privaloma patvirtinimo varnelė; pakeitus etapą ar laiško tekstą tvirtinama iš naujo |
+| Priminimų istorija | Data, etapas, gavėjas, skola, patvirtinęs asmuo, laiško tekstas ir sąskaitų kopija siuntimo metu |
+| Skolos pokytis po priminimo | Lyginami to paties siuntimo metu užfiksuoto sąskaitų rinkinio likučiai |
+| Individualus PDF | Tikras naršyklėje generuojamas PDF su lietuviškomis raidėmis ir puslapiavimu |
+| PDF du kartus per savaitę | Nustatomos dvi skirtingos dienos ir laikas, vieno paleidimo imitacija, ataskaitos kiekvienam aktyviam vadybininkui |
+| PDF siuntimo istorija | Ataskaitos duomenų kopija siuntimo metu; vėlesni importai jos nekeičia |
+| Administravimas | Prieigos, vadybininkų priskyrimai, trijų etapų šablonai, importo ir PDF grafikas |
+| CSV importas | Sąskaitų ir mokėjimų eilutės, patikra, patvirtinimas, atnaujinimas pagal tipą ir ID, importų istorija |
 
-## CSV formatas
+## Rekomenduojama pristatymo eiga
 
-UTF-8, skyriklis kabliataškis arba kablelis. Kabutėmis apgaubti laukai palaikomi. Failo riba – 2 MB.
+1. Pradėkite nuo vadybininkės Aistės apžvalgos. Matosi bendra ir pradelsta skola bei pasirinktos dienos mokėjimai.
+2. „Sąskaitos“: ieškokite SF-001-01, peržiūrėkite terminus ir likučius, atverkite kliento kortelę.
+3. Kortelėje peržiūrėkite sąskaitų bei mokėjimų istoriją. Tarp pavyzdžių yra sąskaitų, kurių terminas dar nesuėjęs.
+4. „Mano skolininkai“ pasirinkite vieną arba kelis klientus → „Paruošti priminimą“. Pakeiskite etapą, peržiūrėkite skirtingus tekstus ir individualias sąskaitų sumas, pažymėkite patvirtinimą.
+5. „Priminimų istorija“ parodo pasirinktą etapą, laiką, gavėją ir užfiksuotą skolą. Siuntimas imituojamas.
+6. „PDF ataskaitos“ → „Atsisiųsti PDF“. Vadybininkui pasiekiama jo individuali pradelstų sąskaitų ataskaita.
+7. Viršuje pasirinkite „Vadovas“: bendra situacija, visų vadybininkų pjūviai ir registrai.
+8. Pasirinkite „Administratorius“: įkelkite butenta_pavyzdys.csv, paskui butenta_po_mokejimo.csv. Patvirtinkite importus. Mokėjimas registruojamas, skola sumažėja, priminimų istorija išlieka.
+9. „PDF ataskaitos“ → „Imituoti vieną suplanuotą siuntimą“. Istorijoje sukuriama atskira ataskaita kiekvienam aktyviam vadybininkui. Iš istorijos atsisiunčiamas tuometinės situacijos PDF.
+10. „Administravimas“: pakeiskite trijų etapų šablonus, dvi PDF siuntimo dienas, prieigas ir priskyrimus. Prieš kitą pristatymą atkurkite pradinius duomenis.
 
-Privaloma antraštė:
+Viršuje galima demonstruoti dviejų vadybininkų, vadovo ir administratoriaus prieigas. Naujus vadybininkus galima įtraukti ir jiems priskirti klientus; prisijungimo perjungiklyje pateiktos iš anksto numatytos paskyros.
 
-kliento_kodas;pavadinimas;el_pastas;vadybininko_id;skola;terminas;paskutinis_mokejimas;mokejimo_suma
+## CSV – naujas formatas
 
-Datos: YYYY-MM-DD. Skolos ir mokėjimo sumos negali būti neigiamos. Dešimtainė dalis gali būti atskirta tašku arba kableliu (kai CSV skyriklis – kabliataškis). Paskutinio mokėjimo data gali būti tuščia. Kodai – raidės, skaičiai, _ arba -; tame pačiame faile nesikartoja. Vadybininkų ID: a – Aistė, m – Mantas, r – Rūta. Visi laukai ir verslo taisyklės yra demonstraciniai: galutiniai derinami pagal realų „Būtentos“ eksportą.
+Ankstesnio prototipo CSV formatas nebetinka. Galutinis „Būtentos“ formatas derinamas projekto metu; čia pateikta demonstracinė struktūra:
 
-Importas atnaujina pagal kliento kodą ir prideda naujus klientus. Faile nesantys klientai nekeičiami ir nelaikomi apmokėtais; skolos padengimą reikia aiškiai nurodyti eilute su skola 0. Ankstesni priminimai išsaugomi. CSV priskyrimai pakeičia esamus priskyrimus. Blogas failas atmetamas visas, duomenys nekeičiami.
+tipas;iraso_id;kliento_kodas;pavadinimas;el_pastas;vadybininko_id;data;terminas;suma;likutis;saskaitos_id
 
-Failai:
+| Laukas | Sąskaitos eilutė | Mokėjimo eilutė |
+|---|---|---|
+| tipas | saskaita | mokejimas |
+| iraso_id | Unikalus sąskaitos numeris | Unikalus mokėjimo numeris |
+| kliento_kodas | Kliento kodas | Kliento kodas |
+| pavadinimas, el_pastas, vadybininko_id | Privalomi kliento duomenys | Tie patys kliento duomenys |
+| data | Išrašymo data | Mokėjimo data |
+| terminas | Apmokėjimo terminas | Tuščias |
+| suma | Visa sąskaitos suma | Mokėjimo suma |
+| likutis | Neapmokėta dalis, įskaitant 0 | Tuščias |
+| saskaitos_id | Tuščias | Susieta sąskaita arba tuščias, jei nesusieta |
 
-- butenta_pavyzdys.csv – pradinė struktūra ir trys klientai.
-- butenta_po_mokejimo.csv – tie patys klientai po mokėjimo, skirtas palyginimui.
+UTF-8, kabliataškis arba kablelis; kabutėmis apgaubti laukai palaikomi. Datos YYYY-MM-DD. Failo riba – 2 MB. ID turi sudaryti raidės, skaičiai, _ arba -. Vadybininkų ID: a – Aistė, m – Mantas, r – Rūta. Dublikatų viename faile, nesutampančių to paties kliento duomenų, neigiamų sumų, neteisingų datų ir pažeistų sąskaitų ryšių patikra vykdoma prieš įrašant pakeitimus.
+
+Pakartotinai importuojamas tas pats mokėjimo ID atnaujina įrašą, nesukuria antro. Skola gaunama iš sąskaitos likučio, todėl mokėjimai iš jos antrą kartą neatimami. Faile nesantys įrašai išsaugomi. Sąskaitos apmokėjimą reikia nurodyti jos likučiu 0. Importo vadybininkų priskyrimai atnaujina esamus.
+
+- butenta_pavyzdys.csv – pradinės 24 sąskaitos ir 18 mokėjimų.
+- butenta_po_mokejimo.csv – pirmos sąskaitos likutis sumažintas 2 000 EUR ir pridėtas atskiras 2 000 EUR mokėjimas.
 
 ## Demonstracijos ribos
 
-- Duomenys fiktyvūs ir saugomi tik šios naršyklės localStorage; tarp naudotojų ir įrenginių nesidalijami.
-- Vaidmenys ir prieigos imituojami kliento pusėje, nėra tikro autentifikavimo. Viešai publikuojamam prototipui naudokite tik demonstracinius duomenis.
-- El. laiškai ir Power Automate vykdymas imituojami; automatinis importas uždarius naršyklę nevyksta.
-- Nustatytas laikas ir etapų slenksčiai yra demonstracinė konfigūracija, ne automatinio vykdymo taisyklės. Būtinas rankinis priminimo patvirtinimas.
-- Skolos pokytis po priminimo yra duomenų palyginimas, o ne įrodymas, kad mokėjimą nulėmė priminimas.
-- Vėlavimo atskaitos data fiksuota: 2026-11-03. Naujų veiksmų data ir laikas – dabartinis naršyklės laikas.
-- Tikram sprendimui reikalinga Power Apps aplikacija, duomenų saugykla, Microsoft 365 prieigos ir Power Automate srautai.
+Tai statinis prototipas su fiktyviais duomenimis. Duomenys saugomi tik naršyklės localStorage, tarp įrenginių nesidalijami. Vaidmenys imituojami, nėra tikro Microsoft 365 autentifikavimo. Naudokite tik demonstracinius duomenis.
+
+PDF generavimas veikia; el. laiškai tikriems gavėjams nesiunčiami. Kasdienis CSV importas ir PDF siuntimo grafikas automatiškai nevykdomi, parodoma jų eiga rankiniu paleidimu. Tikram veikimui reikėtų Power Apps, Power Automate, duomenų saugyklos ir Microsoft 365 prieigų.
+
+Vėlavimui ir pradelstai skolai naudojama fiksuota 2026-11-03 data. Mokėjimų dieną galima pasirinkti. Nauji veiksmai žymimi dabartiniu naršyklės laiku. Savaitės dienos, valandos, etapų slenksčiai ir laiškų tekstai yra demonstraciniai, tikslinami projekto metu. Automatinio etapų keitimo nėra.
+
+Mokėjimų istorija demonstruoja turimą laikotarpį, nėra pilna buhalterinė apskaita. Skolos pokytis po priminimo rodo likučių palyginimą, ne priežastinį ryšį su siuntimu.
 
 ## Patikra
 
-Patikrinta JavaScript sintaksė, vaidmenų duomenų atranka, neaktyvi prieiga, CSV kabučių apdorojimas ir klaidų atmetimas, importo skolos bei istorijos išlaikymas, priminimo patvirtinimas ir skolos sumos fiksavimas. Naršyklėje patikrinta priminimo peržiūra, patvirtinimas ir istorija, kasdienio importo imitacija bei naudotojo sukūrimas.
+Patikrinti vaidmenų duomenų apribojimai, sąskaitų ir mokėjimų modelis, CSV pakartotinis importas be mokėjimų dubliavimo, klaidingų duomenų atmetimas, skolos ir priminimo istorijos išlaikymas, trečias priminimo etapas, ataskaitų atranka pagal vadybininką ir istorinių kopijų nekintamumas. PDF turinys patikrintas tekstu ir vizualiai, įskaitant kelių puslapių atvejį. Naršyklėje patikrinta sąskaitų paieška, kliento istorija, etapų keitimas ir PDF siuntimo demonstracija.
+
+Įtrauktas DejaVu Sans Mono šriftas; licencija pateikta FONT_LICENSE.txt.
